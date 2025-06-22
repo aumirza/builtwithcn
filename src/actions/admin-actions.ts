@@ -203,7 +203,7 @@ export async function getAdminWebsites(
     }
 
     if (status) {
-      conditions.push(eq(website.status, status as any));
+      conditions.push(eq(website.status, status));
     }
 
     if (category) {
@@ -261,11 +261,14 @@ export async function getAdminWebsites(
 // Update website status
 export async function updateWebsiteStatus(
   websiteId: number,
-  status: "approved" | "rejected",
-  reason?: string
+  status: "approved" | "rejected"
 ) {
   try {
-    const updateData: any = {
+    const updateData: {
+      status: "approved" | "rejected";
+      updatedAt: Date;
+      publishedAt?: Date;
+    } = {
       status,
       updatedAt: new Date(),
     };
