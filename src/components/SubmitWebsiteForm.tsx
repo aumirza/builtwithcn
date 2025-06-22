@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -192,8 +193,8 @@ export function SubmitWebsiteForm() {
             </h3>
             <p className="text-muted-foreground max-w-md mx-auto">
               Thank you for submitting your website. Our moderators will review
-              it and publish it soon. You'll receive an email notification once
-              it's approved.
+              it and publish it soon. You&apos;ll receive an email notification
+              once it&apos;s approved.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <Button onClick={() => setSubmitSuccess(false)} variant="outline">
@@ -370,9 +371,11 @@ export function SubmitWebsiteForm() {
                   {/* Image Preview */}
                   {watchedImageUrl && (
                     <div className="mt-2">
-                      <img
+                      <Image
                         src={watchedImageUrl}
                         alt="Website preview"
+                        width={384}
+                        height={192}
                         className="w-full max-w-md h-48 object-cover rounded-lg border"
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = "none";

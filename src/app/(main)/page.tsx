@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const { websites: initialWebsites, total } = await getWebsites({
     search: search || undefined,
     category: category !== "all" ? category : undefined,
-    sortBy: sortBy as any,
+    sortBy: sortBy as "newest" | "oldest" | "popular",
     isPopular: showPopularOnly ? true : undefined,
     limit,
     offset,

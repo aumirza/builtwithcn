@@ -5,7 +5,7 @@ import {
   websiteComment,
 } from "@/db/schemas/website-schema";
 import { user } from "@/db/schemas/auth-schema";
-import { eq, desc, asc, like, and, or, sql, count } from "drizzle-orm";
+import { eq, desc, asc, like, and, sql, count } from "drizzle-orm";
 
 export interface WebsiteFilters {
   search?: string;
@@ -66,17 +66,11 @@ export async function getWebsites(filters: WebsiteFilters = {}): Promise<{
   const conditions = [eq(website.status, status)];
 
   if (search) {
-    conditions.push(
-      or(
-        like(website.title, `%${search}%`),
-        like(website.description, `%${search}%`),
-        sql`${website.tags} && ARRAY[${search}]::text[]`
-      )
-    );
+    conditions.push(like(website.title, `%${search}%`));
   }
 
   if (category && category !== "all") {
-    conditions.push(eq(website.category, category as any));
+    conditions.push(eq(website.category, category));
   }
 
   if (isPopular !== undefined) {
@@ -283,7 +277,7 @@ export async function updateWebsiteStatus(
   const [updatedWebsite] = await db
     .update(website)
     .set({
-      status: status as any,
+      status: status,
       reviewedBy,
       publishedAt: status === "approved" ? new Date() : null,
       updatedAt: new Date(),

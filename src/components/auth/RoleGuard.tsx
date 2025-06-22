@@ -54,8 +54,8 @@ export function RoleGuard({
         <Alert variant="destructive" className="max-w-md mx-auto">
           <Shield className="h-4 w-4" />
           <AlertDescription>
-            You don't have permission to access this content. Required role:{" "}
-            {requiredRole}, your role: {user.role}.
+            You don&apos;t have permission to access this content. Required
+            role: {requiredRole}, your role: {user.role}.
           </AlertDescription>
         </Alert>
       );

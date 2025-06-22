@@ -243,7 +243,7 @@ export async function seedDatabase() {
 
     // Insert websites
     console.log("🌐 Seeding websites...");
-    const insertedWebsites: any[] = [];
+    const insertedWebsites: (typeof website.$inferSelect)[] = [];
     for (const websiteData of seedWebsites) {
       const [insertedWebsite] = await db
         .insert(website)

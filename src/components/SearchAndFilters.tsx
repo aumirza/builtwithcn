@@ -195,7 +195,7 @@ export function SearchAndFilters({
           )}
           {initialSearch && (
             <Badge variant="secondary" className="gap-1">
-              Search: "{initialSearch}"
+              Search: &quot;{initialSearch}&quot;
               <X
                 className="h-3 w-3 cursor-pointer"
                 onClick={() => {

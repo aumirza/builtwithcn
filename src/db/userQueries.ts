@@ -1,6 +1,6 @@
 import { db } from "@/db/db";
 import { user, userRoleEnum } from "@/db/schemas/auth-schema";
-import { eq, desc, count, sql } from "drizzle-orm";
+import { eq, desc, count } from "drizzle-orm";
 
 export type UserRole = (typeof userRoleEnum.enumValues)[number];
 

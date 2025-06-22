@@ -24,7 +24,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email: session.user.email,
         emailVerified: session.user.emailVerified,
         image: session.user.image || null,
-        role: ((session.user as any).role as UserRole) || "user",
+        role: (session.user as User & { role: UserRole }).role || "user",
         createdAt: session.user.createdAt
           ? new Date(session.user.createdAt)
           : new Date(),

@@ -49,7 +49,7 @@ export function WebsiteGrid({
       const result = await getWebsitesList({
         search: searchQuery || undefined,
         category: selectedCategory !== "all" ? selectedCategory : undefined,
-        sortBy: sortBy as any,
+        sortBy: sortBy as "newest" | "oldest" | "popular" | "views" | "likes",
         isPopular: showPopularOnly ? true : undefined,
         limit: 12,
         offset,
@@ -108,8 +108,8 @@ export function WebsiteGrid({
         </div>
         <h3 className="text-xl font-semibold mb-2">No websites found</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
-          We couldn't find any websites matching your criteria. Try adjusting
-          your filters or search terms.
+          We couldn&apos;t find any websites matching your criteria. Try
+          adjusting your filters or search terms.
         </p>
       </div>
     );

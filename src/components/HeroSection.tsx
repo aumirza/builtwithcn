@@ -80,7 +80,7 @@ export function HeroSection() {
                 value: "24/7",
                 label: "Active",
               },
-            ].map((stat, idx) => (
+            ].map((stat) => (
               <Card
                 key={stat.label}
                 className="border-2 hover:border-primary/20 transition-colors text-center p-4"

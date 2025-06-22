@@ -78,7 +78,8 @@ export function LoginForm() {
       }
 
       router.push("/");
-    } catch (err) {
+    } catch (error) {
+      console.error("Sign in error:", error);
       signInForm.setError("root", {
         message: "An unexpected error occurred. Please try again.",
       });
@@ -101,7 +102,8 @@ export function LoginForm() {
       }
 
       router.push("/");
-    } catch (err) {
+    } catch (error) {
+      console.error("Sign up error:", error);
       signUpForm.setError("root", {
         message: "An unexpected error occurred. Please try again.",
       });
